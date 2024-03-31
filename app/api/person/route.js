@@ -18,7 +18,12 @@ export async function GET(request) {
   const data = await resp.json();
 
   return new Response(JSON.stringify(data), {
-    headers: { 'content-type': 'application/json' },
+    headers: {
+      'content-type': 'application/json',
+      'access-control-allow-methods': 'GET,HEAD',
+      'access-control-allow-origin': '*',
+      'X-by-steve': 'yep',
+    },
     status: 200,
   });
 }
@@ -27,6 +32,9 @@ export async function HEAD(request) {
   return new Response(null, {
     headers: {
       'content-type': 'application/json',
+      'content-length': 868,
+      'access-control-allow-methods': 'GET,HEAD',
+      'access-control-allow-origin': '*',
       'X-by-steve': 'yep',
     },
     status: 200,
